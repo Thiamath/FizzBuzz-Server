@@ -19,9 +19,9 @@ class FizzBuzzServiceTest {
     }
 
     @ParameterizedTest
-    @MethodSource("okArguments")
+    @MethodSource("errorArguments")
     fun `calculateFizzBuzz with errors`(request: FizzBuzzRequest) {
-        assertFailsWith<BadRequestError> { fizzBuzzService.calculateFizzBuzz(request) }
+        assertFailsWith<BadArgumentException> { fizzBuzzService.calculateFizzBuzz(request) }
     }
 
     companion object {
