@@ -53,12 +53,16 @@ class FizzBuzzServiceTest {
                 listOf("buzz", "buzz", "fizzbuzz", "buzz", "buzz", "fizzbuzz", "buzz", "buzz", "fizzbuzz", "buzz"),
             ),
             Arguments.of(
-                FizzBuzzRequest(str1 = "str1", limit = 10),
-                listOf("1", "2", "str1", "4", "buzz", "str1", "7", "8", "str1", "buzz"),
+                FizzBuzzRequest(str1 = "hello", limit = 10),
+                listOf("1", "2", "hello", "4", "buzz", "hello", "7", "8", "hello", "buzz"),
             ),
             Arguments.of(
-                FizzBuzzRequest(str2 = "str2", limit = 10),
-                listOf("1", "2", "fizz", "4", "str2", "fizz", "7", "8", "fizz", "str2"),
+                FizzBuzzRequest(str2 = "world", limit = 10),
+                listOf("1", "2", "fizz", "4", "world", "fizz", "7", "8", "fizz", "world"),
+            ),
+            Arguments.of(
+                FizzBuzzRequest(str1 = "hello", str2 = "world", limit = 10),
+                listOf("1", "2", "helloworld", "4", "world", "helloworld", "7", "8", "helloworld", "world"),
             ),
         )
 
