@@ -5,7 +5,6 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import org.thiamath.fizzbuzzserver.domain.model.FizzBuzzRequest
 import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 
 class FizzBuzzServiceTest {
     private val fizzBuzzService: FizzBuzzService = FizzBuzzService()
@@ -16,12 +15,6 @@ class FizzBuzzServiceTest {
     fun `Run calculateFizzBuzz without errors`(request: FizzBuzzRequest, response: List<String>) {
         val result = fizzBuzzService.calculateFizzBuzz(request)
         assertEquals(response, result)
-    }
-
-    @ParameterizedTest
-    @MethodSource("errorArguments")
-    fun `calculateFizzBuzz with errors`(request: FizzBuzzRequest) {
-        assertFailsWith<BadArgumentException> { fizzBuzzService.calculateFizzBuzz(request) }
     }
 
     companion object {

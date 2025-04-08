@@ -5,12 +5,11 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
-import org.thiamath.fizzbuzzserver.domain.service.BadArgumentException
 
 @ControllerAdvice
 class ErrorHandler : ResponseEntityExceptionHandler() {
 
-    @ExceptionHandler(BadArgumentException::class)
+    @ExceptionHandler(IllegalArgumentException::class)
     fun handleBadRequestError(exception: Exception): ResponseEntity<Any> {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body(

@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import org.thiamath.fizzbuzzserver.domain.service.BadArgumentException
+import org.thiamath.fizzbuzzserver.domain.model.FizzBuzzRequest
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -112,19 +112,19 @@ class FizzBuzzImplTest {
             // Test with negative limit
             Arguments.of(
                 null, null, -1, null, null,
-                "${BadArgumentException.Companion.ErrorMessage.LIMIT_GT_0}"
+                FizzBuzzRequest.LIMIT_ERROR_MESSAGE
             ),
 
             // Test with zero int1
             Arguments.of(
                 0, null, 10, null, null,
-                "${BadArgumentException.Companion.ErrorMessage.INT1_NE_0}"
+                FizzBuzzRequest.INT1_ERROR_MESSAGE
             ),
 
             // Test with zero int2
             Arguments.of(
                 null, 0, 10, null, null,
-                "${BadArgumentException.Companion.ErrorMessage.INT2_NE_0}"
+                FizzBuzzRequest.INT2_ERROR_MESSAGE
             )
         )
     }
