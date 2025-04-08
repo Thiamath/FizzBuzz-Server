@@ -14,7 +14,7 @@ import org.thiamath.fizzbuzzserver.domain.model.FizzBuzzRequest
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class FizzBuzzImplTest {
+class GetFizzBuzzImplTest {
 
     @Autowired
     private lateinit var mockMvc: MockMvc

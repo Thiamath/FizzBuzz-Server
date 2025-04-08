@@ -10,7 +10,7 @@ import org.thiamath.fizzbuzzserver.domain.port.inbound.GetFizzBuzz
 import org.thiamath.fizzbuzzserver.domain.service.FizzBuzzService
 
 @RestController
-class FizzBuzzImpl(private val fizzBuzzService: FizzBuzzService) : GetFizzBuzz {
+class GetFizzBuzzImpl(private val fizzBuzzService: FizzBuzzService) : GetFizzBuzz {
     @GetMapping("/fizzbuzz", produces = ["application/json"])
     @ResponseBody
     override fun execute(
