@@ -9,6 +9,10 @@ import org.thiamath.fizzbuzzserver.domain.port.outbound.StatsStore
 class StatsStoreImpl : StatsStore {
     private val db = mutableMapOf<FizzBuzzRequest, Int>()
 
+    fun clear() {
+        db.clear()
+    }
+
     override fun store(request: FizzBuzzRequest) {
         db[request] = db.getOrDefault(request, 0) + 1
     }

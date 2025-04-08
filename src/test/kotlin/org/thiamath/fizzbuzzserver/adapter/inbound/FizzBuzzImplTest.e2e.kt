@@ -1,5 +1,6 @@
 package org.thiamath.fizzbuzzserver.adapter.inbound
 
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -10,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.thiamath.fizzbuzzserver.adapter.outbound.StatsStoreImpl
 import org.thiamath.fizzbuzzserver.domain.model.FizzBuzzRequest
 
 @SpringBootTest
@@ -18,6 +20,14 @@ class GetFizzBuzzImplTest {
 
     @Autowired
     private lateinit var mockMvc: MockMvc
+
+    @Autowired
+    private lateinit var statsStore: StatsStoreImpl
+
+    @AfterEach
+    fun clearStatsStore() {
+        statsStore.clear()
+    }
 
     @ParameterizedTest
     @MethodSource("okArguments")

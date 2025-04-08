@@ -1,14 +1,15 @@
 package org.thiamath.fizzbuzzserver.adapter.inbound
 
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.thiamath.fizzbuzzserver.adapter.outbound.StatsStoreImpl
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -16,6 +17,14 @@ class GetStatsImplTest {
 
     @Autowired
     private lateinit var mockMvc: MockMvc
+
+    @Autowired
+    private lateinit var statsStore: StatsStoreImpl
+
+    @AfterEach
+    fun clearStatsStore() {
+        statsStore.clear()
+    }
 
     @Test
     fun `should return stats response`() {
@@ -27,7 +36,6 @@ class GetStatsImplTest {
     }
 
     @Test
-    @DirtiesContext
     fun `should return correct stats`() {
         // Having
         val mostUsed = mapOf("int1" to 1, "int2" to 2)
@@ -57,7 +65,6 @@ class GetStatsImplTest {
     }
 
     @Test
-    @DirtiesContext
     fun `should return any as most used if there's no most used one`() {
         // Having
         listOf(
